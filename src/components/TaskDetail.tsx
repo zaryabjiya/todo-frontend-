@@ -5,16 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useApiClient } from './ApiClientProvider';
 import { useAuth } from '../providers/AuthProvider';
-
-interface Task {
-  id: number;
-  title: string;
-  description?: string;
-  completed: boolean;
-  user_id: number;
-  created_at: string;
-  updated_at: string;
-}
+import { Task } from '../lib/types';
 
 interface TaskDetailProps {
   taskId: string;
