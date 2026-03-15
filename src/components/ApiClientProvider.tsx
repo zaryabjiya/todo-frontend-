@@ -2,6 +2,7 @@
 'use client';
 
 import React, { createContext, useContext, ReactNode } from 'react';
+import { getApiBaseUrl } from '../lib/config';
 
 interface ApiClientContextType {
   getAuthToken: () => string | null;
@@ -20,7 +21,7 @@ interface ApiClientContextType {
 const ApiClientContext = createContext<ApiClientContextType | undefined>(undefined);
 
 export const ApiClientProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+  const baseUrl = getApiBaseUrl();
 
   const getAuthToken = (): string | null => {
     if (typeof window === 'undefined') return null;

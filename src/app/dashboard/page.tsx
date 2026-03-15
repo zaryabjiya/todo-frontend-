@@ -9,6 +9,7 @@ import TaskForm from '../../components/TaskForm';
 import ProgressCircle from '../../components/ProgressCircle';
 import { useAuth } from '../../providers/AuthProvider';
 import { useApiClient } from '../../components/ApiClientProvider';
+import { getApiBaseUrl } from '../../lib/config';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Calendar, CheckCircle2, Circle, Filter, Sparkles, Clock } from 'lucide-react';
 
@@ -60,7 +61,7 @@ export default function DashboardPage() {
 
   const handleTaskDelete = async (taskId: number) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/users/${user!.id}/tasks/${taskId}`, {
+      const response = await fetch(`${getApiBaseUrl()}/users/${user!.id}/tasks/${taskId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

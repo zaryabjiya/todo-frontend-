@@ -50,7 +50,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
     } catch (err: any) {
       // Provide more helpful error messages
       if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
-        setError('Unable to connect to the server. Please make sure the backend is running on http://localhost:8000');
+        setError('Unable to connect to the server. Please check NEXT_PUBLIC_API_URL in Vercel and make sure the backend is running.');
       } else if (err.message.includes('Email already registered')) {
         setError('This email is already registered. Please sign in instead.');
       } else if (err.message.includes('Username already taken')) {
